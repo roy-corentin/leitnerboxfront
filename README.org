@@ -6,6 +6,7 @@ Front app for futur leitnerbox web app
 - Bun
 - Svelte
 - DaysiUI
+- TypeScript
 
 * DEVELOPING
 
