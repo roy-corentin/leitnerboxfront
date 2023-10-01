@@ -5,15 +5,16 @@ export const actions: import("./$types").Actions = {
     const data = await request.formData();
     const email = data.get("email");
     const password = data.get("password");
+    const passwordConfirmation = data.get("password-confirmation");
 
     if (!email) {
       return fail(400, { email, missing: true });
     }
 
-    const response = await fetch("http://localhost:3000/sign_ins", {
+    const response = await fetch("http://localhost:3000/sign_ups", {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify({ user: { email: email, password: password } }),
+      body: JSON.stringify({ user: { email: email, password: password, password_confirmation: passwordConfirmation } }),
     });
 
     const json = await response.json();
