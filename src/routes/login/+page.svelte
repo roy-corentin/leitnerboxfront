@@ -28,7 +28,7 @@
         type="password"
         bind:value={password}
       />
-      <button class="btn btn-primary mt-8">SignUp</button>
+      <button class="btn btn-primary mt-8">Login</button>
     </form>
   </div>
 </body>
