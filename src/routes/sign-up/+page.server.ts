@@ -1,7 +1,8 @@
-import { fail } from "@sveltejs/kit";
+import { fail, redirect } from "@sveltejs/kit";
+import type { Actions } from "./$types";
 
-export const actions: import("./$types").Actions = {
-  default: async ({ request }) => {
+export const actions: Actions = {
+  default: async ({ request, cookies }) => {
     const data = await request.formData();
     const email = data.get("email");
     const password = data.get("password");
@@ -22,7 +23,8 @@ export const actions: import("./$types").Actions = {
     console.log(email, password);
 
     if (response.ok) {
-      return { success: "ok", token: json.token };
+      cookies.set("sessionId", json.token);
+      throw redirect(303, "/");
     } else {
       return fail(400, { error: true, message: json.details });
     }
