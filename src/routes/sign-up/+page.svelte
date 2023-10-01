@@ -9,7 +9,6 @@
     <form class="bg-white form-control p-8 rounded w-1/3" method="post" action="/sign-up">
       {#if form?.missing}<p class="text-error">The email field id required*</p>{/if}
       {#if form?.error}<p class="text-error">{form.message}</p>{/if}
-      {#if form?.success}<p class="text-success">{form.token}</p>{/if}
       <label for="email" class="label">
         <span class="label-text {email ? 'text-success' : form?.missing ? 'text-error' : ''}">Email</span>
       </label>
