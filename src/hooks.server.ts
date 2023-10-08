@@ -8,13 +8,15 @@ export const handle: Handle = async ({ event, resolve }) => {
     throw redirect(303, "/login");
   }
 
-  const user = await fetch("http://localhost:3000/me", {
+  const meResponse = await fetch("http://localhost:3000/me", {
     method: "GET",
     headers: { Authorization: `Bearer ${sessionId}` },
   });
-  const json: User = await user.json();
 
-  event.locals.user = json;
+  if (meResponse.ok) {
+    const user: User = await meResponse.json();
+    event.locals.user = user;
+  }
 
   const response = resolve(event);
 

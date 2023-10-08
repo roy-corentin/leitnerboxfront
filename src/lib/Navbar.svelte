@@ -1,8 +1,8 @@
-<script>
-  import "../app.css";
+<script lang="ts">
+  export let user: User | undefined;
 </script>
 
-<nav class="navbar bg-base-100 border-b-2 border-primary-focus mb-4">
+<nav class="navbar bg-base-100 border-b-2 border-primary-focus mb-4 lg:px-12">
   <div class="navbar-start">
     <a class="link-primary text-lg" href="/">LeitnerBox</a>
   </div>
