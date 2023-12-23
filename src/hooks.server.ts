@@ -1,6 +1,8 @@
 import { redirect, type Handle } from "@sveltejs/kit";
+import { parseUser } from "./parser/user";
 
 const unProtectedRoutes = ["/login", "/sign-up"];
+
 export const handle: Handle = async ({ event, resolve }) => {
   const sessionId = event.cookies.get("sessionId");
 
@@ -14,8 +16,8 @@ export const handle: Handle = async ({ event, resolve }) => {
   });
 
   if (meResponse.ok) {
-    const user: User = await meResponse.json();
-    event.locals.user = user;
+    const userApi = await meResponse.json();
+    event.locals.user = parseUser(userApi);
   }
 
   const response = resolve(event);
