@@ -6,7 +6,7 @@ const unProtectedRoutes = ["/login", "/sign-up"];
 export const handle: Handle = async ({ event, resolve }) => {
   const sessionId = event.cookies.get("sessionId");
 
-  if (!sessionId && !unProtectedRoutes.includes(event.url.pathname)) {
+  if (shouldBeRedirected(event.url.pathname, sessionId)) {
     throw redirect(303, "/login");
   }
 
@@ -15,12 +15,18 @@ export const handle: Handle = async ({ event, resolve }) => {
     headers: { Authorization: `Bearer ${sessionId}` },
   });
 
-  if (meResponse.ok) {
+  if (sessionId && meResponse.ok) {
+    console.log("from hook server sessionId: ", sessionId);
     const userApi = await meResponse.json();
     event.locals.user = parseUser(userApi);
+    event.locals.sessionId = sessionId;
   }
 
   const response = resolve(event);
 
   return response;
 };
+
+function shouldBeRedirected(path: string, sessionId: string | undefined) {
+  return !unProtectedRoutes.includes(path) && !sessionId;
+}

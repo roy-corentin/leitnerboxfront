@@ -19,6 +19,7 @@ declare global {
 		// interface Platform {}
 		interface Locals {
 			user: User;
+			sessionId: string | undefined;
 		}
 	}
 }
