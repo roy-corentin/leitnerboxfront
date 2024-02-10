@@ -14,7 +14,7 @@ export const actions: Actions = {
     const response = await fetch("http://localhost:3000/sign_ins", {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify({ user: { email: email, password: password } }),
+      body: JSON.stringify({ user: { email, password } }),
     });
 
     const json = await response.json();
