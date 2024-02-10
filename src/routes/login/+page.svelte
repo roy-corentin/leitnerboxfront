@@ -2,6 +2,7 @@
   export let form;
   export let data;
   let { email, password } = data;
+  // TODO Try transform all ternary operator of empty string with && operator
 </script>
 
 <body>
