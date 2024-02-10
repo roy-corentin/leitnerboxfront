@@ -23,7 +23,7 @@ export const actions: Actions = {
     console.log(email, password);
 
     if (response.ok) {
-      cookies.set("sessionId", json.token);
+      cookies.set("sessionId", json.token, { path: "/" });
       throw redirect(303, "/");
     } else {
       return fail(400, { error: true, message: json.details });
