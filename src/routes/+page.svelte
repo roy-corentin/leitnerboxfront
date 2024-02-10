@@ -1,6 +1,7 @@
 <script lang="ts">
   export let data;
-  import NewBoxButton from "$lib/box/ButtonNew.svelte";
+  import BoxNewButton from "$lib/box/NewButton.svelte";
+  import BoxPreview from "$lib/box/Preview.svelte";
   console.table(data);
 </script>
 
@@ -8,15 +9,9 @@
   {#if data?.user}
     <div class="mt-10 grid md:grid-cols-3 place-items-center md:place-items-strecth gap-8">
       {#each data?.user.leitnerBoxes as box, i}
-        <div
-          class="group flex flex-col border-2 border-primary-content hover:border-primary h-80 w-64 items-center justify-center rounded-xl"
-        >
-          <p class="text-xl font-bold font-mono text-primary-content group-hover:text-primary">
-            {`${box.name} ${i + 1}`}
-          </p>
-        </div>
+        <BoxPreview {box} index={i} />
       {/each}
-      <NewBoxButton />
+      <BoxNewButton />
     </div>
   {/if}
 </body>
