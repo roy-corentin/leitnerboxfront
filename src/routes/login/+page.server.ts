@@ -8,7 +8,10 @@ export const actions: Actions = {
     const password = data.get("password");
 
     if (!email) {
-      return fail(400, { email, missing: true });
+      return fail(400, { emailMissing: true });
+    }
+    if (!password) {
+      return fail(400, { passwordMissing: true });
     }
 
     const response = await fetch("http://localhost:3000/sign_ins", {

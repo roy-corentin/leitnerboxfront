@@ -1,28 +1,35 @@
 <script lang="ts">
+  interface Data {
+    email: string;
+    password: string;
+    passwordConfirmation: string;
+  }
+
   export let form;
-  export let data;
+  export let data: Data;
   let { email, password, passwordConfirmation } = data;
 </script>
 
 <body>
   <div class="flex items-center justify-center h-screen">
     <form class="bg-white form-control p-8 rounded w-1/3" method="post" action="/sign-up">
-      {#if form?.missing}<p class="text-error">The email field id required*</p>{/if}
+      {#if form?.emailMissing}<p class="text-error">The Email field id required*</p>{/if}
+      {#if form?.passwordMissing}<p class="text-error">The Password field id required*</p>{/if}
       {#if form?.error}<p class="text-error">{form.message}</p>{/if}
       <label for="email" class="label">
-        <span class="label-text {email ? 'text-success' : form?.missing ? 'text-error' : ''}">Email</span>
+        <span class="label-text {email ? 'text-success' : form?.emailMissing ? 'text-error' : ''}">Email</span>
       </label>
       <input
-        class="input input-bordered input-sm {email ? 'input-success' : form?.missing ? 'input-error' : ''}"
+        class="input input-bordered input-sm {email ? 'input-success' : form?.emailMissing ? 'input-error' : ''}"
         name="email"
         type="text"
         bind:value={email}
       />
       <label for="password" class="label">
-        <span class="label-text {password ? 'text-success' : ''}">Password</span>
+        <span class="label-text {password ? 'text-success' : form?.passwordMissing ? 'text-error' : ''}">Password</span>
       </label>
       <input
-        class="input input-bordered input-sm {password ? 'input-success' : ''}"
+        class="input input-bordered input-sm {password ? 'input-success' : form?.passwordMissing ? 'input-error' : ''}"
         name="password"
         type="password"
         bind:value={password}
