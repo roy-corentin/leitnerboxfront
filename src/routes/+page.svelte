@@ -1,7 +1,7 @@
 <script lang="ts">
   export let data;
-  import BoxNewButton from "$lib/box/NewButton.svelte";
-  import BoxPreview from "$lib/box/Preview.svelte";
+  import BoxNewButton from "$lib/box/BoxNewButton.svelte";
+  import BoxPreview from "$lib/box/BoxPreview.svelte";
   console.table(data);
 </script>
 
