@@ -1,6 +1,8 @@
+import type { LeitnerBoxApi } from "./box";
+
 interface UserApi {
   email: string;
-  leitner_box: { email: string; id: string; name: string; user_id: string; cards_id: string[] }[];
+  leitner_box: LeitnerBoxApi[];
 }
 
 export function parseUser(userApi: UserApi): User {

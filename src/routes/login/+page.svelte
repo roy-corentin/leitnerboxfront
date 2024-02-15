@@ -1,11 +1,9 @@
 <script lang="ts">
-  interface Data {
-    email?: string;
-    password?: string;
-  }
+  import type { PageData } from "./$types.js";
 
   export let form;
-  export let data: Data;
+  export let data: PageData;
+
   let { email, password } = data;
   console.log(form);
 </script>
@@ -24,7 +22,7 @@
         name="email"
         type="text"
         autocomplete="email"
-        formnovalidate={email?.includes("@")}
+        formnovalidate={email?.includes("@") ?? false}
         bind:value={email}
       />
       <label for="password" class="label">

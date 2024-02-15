@@ -1,4 +1,6 @@
-export async function load() {
+import type { PageLoad } from "./$types";
+
+export const load: PageLoad = (): { email?: string; password?: string; passwordConfirmation?: string } => {
   let email: string | undefined = undefined;
   let password: string | undefined = undefined;
   let passwordConfirmation: string | undefined = undefined;
@@ -8,4 +10,4 @@ export async function load() {
     password,
     passwordConfirmation,
   };
-}
+};

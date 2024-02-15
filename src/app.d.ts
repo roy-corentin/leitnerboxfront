@@ -4,8 +4,8 @@ declare global {
 	interface LeitnerBox {
 		id: string;
 		name: string;
-		user_id: string;
-		cards_id: string[];
+		userId: string;
+		cardsId: string[];
 	}
 
 	interface User {
@@ -24,4 +24,4 @@ declare global {
 	}
 }
 
-export {};
+export { User, LeitnerBox };

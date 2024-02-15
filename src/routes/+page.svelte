@@ -1,7 +1,9 @@
 <script lang="ts">
-  export let data;
+  import type { PageData } from "./$types";
   import BoxNewButton from "$lib/box/BoxNewButton.svelte";
   import BoxPreview from "$lib/box/BoxPreview.svelte";
+
+  export let data: PageData;
   console.table(data);
 </script>
 

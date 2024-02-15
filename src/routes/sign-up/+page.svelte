@@ -1,12 +1,9 @@
 <script lang="ts">
-  interface Data {
-    email: string;
-    password: string;
-    passwordConfirmation: string;
-  }
+  import type { PageData } from "./$types.js";
 
   export let form;
-  export let data: Data;
+  export let data: PageData;
+
   let { email, password, passwordConfirmation } = data;
 </script>
 

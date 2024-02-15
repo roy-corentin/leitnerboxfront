@@ -20,9 +20,10 @@ export const handle: Handle = async ({ event, resolve }) => {
     const userApi = await meResponse.json();
     event.locals.user = parseUser(userApi);
     event.locals.sessionId = sessionId;
+    console.log("from hook server userApi: ", userApi);
   }
 
-  const response = resolve(event);
+  const response = await resolve(event);
 
   return response;
 };
