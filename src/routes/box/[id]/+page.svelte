@@ -6,6 +6,10 @@
   console.log(box);
 </script>
 
-<div>
-  <h2>{box.name}</h2>
+<div class="flex items-center justify-center mt-20">
+  {#if box === undefined}
+    <div class="loading loading-dots loading-lg" />
+  {:else}
+    <h2>{box.name}</h2>
+  {/if}
 </div>

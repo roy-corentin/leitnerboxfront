@@ -1,5 +1,3 @@
-import type { Cookies } from "@sveltejs/kit";
-import type { RouteParams } from "../$types";
 import type { PageServerLoad } from "./$types";
 import { parseBox } from "../../../parser/box";
 

@@ -6,6 +6,17 @@ declare global {
 		name: string;
 		userId: string;
 		cardsId: string[];
+		decks: Deck[];
+	}
+
+	interface Deck {
+		id: string;
+		leitnerBoxId: string;
+		periodUnit: number;
+		periodType: PeriodType;
+		level: number;
+		lastReview: Date | null;
+		cardIds: string[];
 	}
 
 	interface User {
