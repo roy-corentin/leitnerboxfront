@@ -29,8 +29,8 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 		interface Locals {
-			user: User;
-			sessionId: string | undefined;
+			user: User | null;
+			sessionId: string | null;
 		}
 	}
 }
