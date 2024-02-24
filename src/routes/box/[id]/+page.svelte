@@ -11,6 +11,8 @@
 <div class="flex flex-col items-center justify-center mt-20">
   {#if box === undefined}
     <div class="loading loading-dots loading-lg" />
+  {:else if box === null}
+    <h1 class="text-4xl">Box not found</h1>
   {:else}
     <h1 class="text-4xl mb-10">{box.name}</h1>
     <div class="flex gap-2">

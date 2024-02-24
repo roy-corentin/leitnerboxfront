@@ -5,6 +5,7 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
     console.log("from +page.server.ts params: ", params);
     const boxId = params["id"];
     const sessionId = cookies.get("sessionId");
+    let box = null;
 
     const boxResponse = await fetch(`http://localhost:3000/leitner_boxes/${boxId}`, {
         method: "GET",
@@ -14,10 +15,10 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
     console.log("from +page.server.ts boxResponse: ", boxResponse);
     if (boxResponse.ok) {
         const boxApi = await boxResponse.json();
-        const box = parseBox(boxApi);
+        box = parseBox(boxApi);
         console.log("from +page.server.ts boxApi: ", boxApi);
-        return {
-            box,
-        };
     }
+    return {
+        box,
+    };
 };
