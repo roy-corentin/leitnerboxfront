@@ -18,6 +18,7 @@ export const actions = {
 
     if (result.ok) {
       console.log("Box created");
+      data.set("box_name", "");
       redirect(303, "/");
     } else {
       return fail(311, { error: "Failed to create box" });
