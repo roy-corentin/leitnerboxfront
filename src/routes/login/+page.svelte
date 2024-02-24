@@ -5,7 +5,8 @@
   export let data: PageData;
 
   let { email, password } = data;
-  console.log(form);
+  let isEmailValid = false;
+  $: email, (isEmailValid = email?.includes("@") ?? false);
 </script>
 
 <body>
@@ -15,14 +16,14 @@
       {#if form?.passwordMissing}<p class="text-error">The Password field is required*</p>{/if}
       {#if form?.error}<p class="text-error">{form.message}</p>{/if}
       <label for="email" class="label">
-        <span class="label-text {email ? 'text-success' : form?.emailMissing ? 'text-error' : ''}">Email</span>
+        <span class="label-text {isEmailValid ? 'text-success' : form?.emailMissing ? 'text-error' : ''}">Email</span>
       </label>
       <input
-        class="input input-bordered input-sm {email ? 'input-success' : form?.emailMissing ? 'input-error' : ''}"
+        class="input input-bordered input-sm {isEmailValid ? 'input-success' : form?.emailMissing ? 'input-error' : ''}"
         name="email"
         type="text"
         autocomplete="email"
-        formnovalidate={email?.includes("@") ?? false}
+        formnovalidate={isEmailValid}
         bind:value={email}
       />
       <label for="password" class="label">
