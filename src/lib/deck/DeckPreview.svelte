@@ -10,13 +10,13 @@
       <div class="grid w-32 h-20 rounded bg-primary text-primary-content place-content-center">
         {deck.cardIds.length}
       </div>
-      {#each deck.cardIds as _cardId, index}
-        <div class="grid w-32 h-20 rounded bg-{colors[index % colors.length]}" />
+      {#each deck.cardIds as _cardId}
+        <div class="grid w-32 h-20 rounded bg-{colors[Math.floor(Math.random() * colors.length)]}" />
       {/each}
     </div>
   </div>
   <div class="card-actions form-control my-2">
     <input type="text" class="select select-xs w-full" value={deck.periodType} placeholder="period_type" />
-    <input type="text" class="input input-xs w-full" value={deck.periodUnit} placeholder="period_unit" />
+    <input type="number" class="input input-xs w-full" value={deck.periodUnit} placeholder="period_unit" />
   </div>
 </div>
