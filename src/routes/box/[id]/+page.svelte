@@ -8,7 +8,7 @@
   if (box && box.decks && box.decks[0]) box.decks[0].cardIds = ["1", "2", "3", "4"];
 </script>
 
-<div class="flex flex-col items-center justify-center mt-20 border">
+<div class="flex flex-col items-center justify-center mt-20">
   {#if box === undefined}
     <div class="loading loading-dots loading-lg" />
   {:else}
