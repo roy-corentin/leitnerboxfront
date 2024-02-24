@@ -3,9 +3,12 @@
   import "../app.css";
 
   export let data;
+  const { user } = data;
 </script>
 
-<Navbar user={data?.user} />
-<div class="max-w-screen-lg mx-auto">
-  <slot />
+<div class="flex flex-col h-screen">
+  <Navbar {user} />
+  <div class="flex flex-grow max-w-screen-lg mx-auto">
+    <slot />
+  </div>
 </div>
