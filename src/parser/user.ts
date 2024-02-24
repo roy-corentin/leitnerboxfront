@@ -1,4 +1,4 @@
-import type { LeitnerBoxApi } from "./box";
+import { parseBox, type LeitnerBoxApi } from "./box";
 
 interface UserApi {
   email: string;
@@ -8,6 +8,6 @@ interface UserApi {
 export function parseUser(userApi: UserApi): User {
   return {
     email: userApi.email,
-    leitnerBoxes: userApi.leitner_box,
+    leitnerBoxes: userApi.leitner_box.map(parseBox),
   };
 }
