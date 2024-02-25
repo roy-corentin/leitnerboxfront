@@ -4,7 +4,8 @@
 
   export let data: PageData;
   let { box } = data;
-  if (box && box.decks) console.log(box);
+
+  $: document.title = box ? `${box.name} - Decks` : "Box not found";
 </script>
 
 <div class="flex flex-col items-center justify-evenly">
