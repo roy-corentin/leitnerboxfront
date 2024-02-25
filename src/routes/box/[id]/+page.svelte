@@ -19,6 +19,6 @@
         <DeckPreview {deck} />
       {/each}
     </div>
-    <a href={`/box/{box.id}/create-card`} class="btn w-full bg-accent text-accent-content mt-10">New Card</a>
+    <a href={`/box/${box.id}/create-card`} class="btn w-full bg-accent text-accent-content mt-10">New Card</a>
   {/if}
 </div>
