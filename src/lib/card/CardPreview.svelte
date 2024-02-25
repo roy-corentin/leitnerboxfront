@@ -9,4 +9,7 @@
   <div class="card-body">
     <p>{card.back}</p>
   </div>
+  <div class="flex flex-end w-full">
+    <button class="btn btn-error btn-sm w-full">Delete</button>
+  </div>
 </div>
