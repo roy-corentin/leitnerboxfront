@@ -8,7 +8,6 @@
   export let previousPage: string | undefined;
 
   afterNavigate(({ from }) => {
-    console.log(from);
     previousPage = from?.url.pathname;
   });
 

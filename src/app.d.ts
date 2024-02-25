@@ -19,6 +19,16 @@ declare global {
 		cardIds: string[];
 	}
 
+	interface Card {
+		id: string;
+		cardType: string;
+		front: string;
+		back: string;
+		description?: string;
+		deckId: string;
+		lastReview: Date | null;
+	}
+
 	interface User {
 		email: string;
 		leitnerBoxes: LeitnerBox[];

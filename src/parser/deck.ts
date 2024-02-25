@@ -1,4 +1,4 @@
-export type PeriodType = "day" | "week" | "month" | "year";
+export type PeriodType = "week" | "month" | "year";
 
 export interface DeckApi {
     id: string;
