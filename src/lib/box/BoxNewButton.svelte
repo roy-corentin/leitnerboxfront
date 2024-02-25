@@ -7,10 +7,10 @@
     class="md:first:ml-5 lg:first:ml-0 flex flex-col border-2 border-primary h-80 w-64 items-center justify-center rounded-xl"
   >
     <input
-      class="input input-bordered w-[90%] text-xl font-bold font-mono hover:ring-2 hover:ring-secondary focus:ring-2 focus:ring-secondary"
+      class="input input-bordered w-[90%] text-xl font-bold font-mono hover:ring-2 hover:ring-secondary focus:ring-2 focus:ring-secondary text-center"
       required
       name="box_name"
-      placeholder="New Box"
+      placeholder="Name"
     />
     <button class="group mt-12 border-2 border-transparent hover:border-secondary rounded-full p-2">
       <svg

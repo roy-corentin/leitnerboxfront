@@ -4,21 +4,21 @@
 
   export let data: PageData;
   let { box } = data;
-  console.log(box);
+  if (box && box.decks) console.log(box);
 </script>
 
-<div class="flex flex-col items-center justify-center px-20 mt-20">
+<div class="flex flex-col items-center justify-evenly px-20">
   {#if box === undefined}
     <div class="loading loading-dots loading-lg" />
   {:else if box === null}
     <h1 class="text-4xl">Box not found</h1>
   {:else}
     <h1 class="text-4xl mb-10">{box.name}</h1>
-    <div class="grid grid-cols-3 md:grid-cols-5 gap-4">
+    <div class="grid grid-cols-3 md:grid-cols-5 gap-10">
       {#each box.decks as deck}
         <DeckPreview {deck} />
       {/each}
     </div>
-    <a href={`/box/{box.id}/create-card`} class="btn mt-10 w-full bg-accent text-accent-content">New Card</a>
+    <a href={`/box/{box.id}/create-card`} class="btn w-full bg-accent text-accent-content mt-10">New Card</a>
   {/if}
 </div>
