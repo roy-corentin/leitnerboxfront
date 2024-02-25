@@ -5,9 +5,7 @@
 
   export let data: PageData;
   let { box, cards, tab } = data;
-
-  console.log(cards);
-  console.log(tab);
+  // TODO don't use p for tabs
 </script>
 
 <div class="flex flex-col items-center justify-evenly">
@@ -35,17 +33,19 @@
         Cards
       </p>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10">
-      {#if tab === "decks"}
+    {#if tab === "decks"}
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10">
         {#each box.decks as deck}
           <DeckPreview {deck} />
         {/each}
-      {:else}
+      </div>
+    {:else}
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-10">
         {#each cards as card}
-          <CardPreview {card} />
+          <CardPreview {card} boxId={box.id} />
         {/each}
-      {/if}
-    </div>
+      </div>
+    {/if}
     <a href={`/box/${box.id}/create-card`} class="btn w-full bg-accent text-accent-content mt-10">New Card</a>
   {/if}
 </div>

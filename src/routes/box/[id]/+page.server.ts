@@ -4,7 +4,7 @@ import { parseCards } from "../../../parser/card";
 import { redirect, type Cookies } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ cookies, params, url }) => {
-    const cardQuery = url.searchParams.get("cards");
+    const tab = url.searchParams.get("tab") ?? "decks";
     const boxId = params["id"];
     const sessionId = cookies.get("sessionId");
     let box = null;
@@ -28,7 +28,7 @@ export const load: PageServerLoad = async ({ cookies, params, url }) => {
     return {
         box,
         cards,
-        tab: cardQuery === "" ? "cards" : "decks",
+        tab,
     };
 };
 
