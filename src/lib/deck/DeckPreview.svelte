@@ -15,14 +15,14 @@
       {/each}
     </div>
   </div>
-  <div class="card-actions my-2">
-    <label class="input input-xs w-full flex items-center justify-center gap-2">
-      <input type="number" class="w-1/2" value={deck.periodUnit} placeholder="period_unit" />
-      Times
+  <div class="card-actions py-2 mx-1">
+    <label class="input input-xs w-full flex items-center justify-center grid grid-cols-2">
+      <input class="text-center" type="number" value={deck.periodUnit} placeholder="period_unit" />
+      <p>Times</p>
     </label>
-    <label class="text-xs flex w-full items-center justify-center gap-2">
-      Per
-      <select class="select select-xs" value={deck.periodType} placeholder="period_type">
+    <label class="text-xs input-ghost flex w-full items-center justify-center grid grid-cols-3">
+      <p class="text-right">Per</p>
+      <select class="select select-xs text-center col-span-2" value={deck.periodType} placeholder="period_type">
         <option value="day">Day</option>
         <option value="week">Week</option>
         <option value="month">Month</option>
