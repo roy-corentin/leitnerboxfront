@@ -1,3 +1,22 @@
+<script lang="ts">
+  import { afterNavigate, goto } from "$app/navigation";
+  import type { PageData } from "./$types";
+
+  export let data: PageData;
+  const { box_id } = data;
+
+  export let previousPage: string | undefined;
+
+  afterNavigate(({ from }) => {
+    console.log(from);
+    previousPage = from?.url.pathname;
+  });
+
+  function cancel() {
+    if (previousPage) goto(previousPage);
+  }
+</script>
+
 <div class="flex flex-col items-center w-full">
   <h1 class="text-5xl font-bold">New Card</h1>
   <form class="grid md:grid-cols-2 w-screen h-full px-2 mt-10 gap-6" method="post">
@@ -33,9 +52,9 @@
         />
       </div>
     </div>
-      <button class="btn btn-secondary md:w-1/3" type="button">Cancel</button>
     <input type="hidden" name="box_id" value={box_id} />
     <div class="md:col-span-2 flex flex-col md:flex-row md:justify-around gap-2 md:gap-0">
+      <button class="btn btn-secondary md:w-1/3" type="button" on:click={cancel}>Cancel</button>
       <button class="btn btn-primary md:w-1/3" type="submit">Save</button>
     </div>
   </form>
