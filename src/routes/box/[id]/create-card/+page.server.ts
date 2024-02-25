@@ -1,7 +1,7 @@
-import { fail, type Actions } from "@sveltejs/kit";
+import { fail, type Actions, redirect } from "@sveltejs/kit";
 
 export const actions = {
-    card: async (event) => {
+    default: async (event) => {
         const data = await event.request.formData();
         const sessionId = event.locals.sessionId;
         const question = data.get("question");
@@ -9,15 +9,26 @@ export const actions = {
         const description = data.get("description");
         const boxId = data.get("box_id");
 
+        const body = {
+            card: {
+                card_type: "text",
+                content: {
+                    front: question,
+                    back: answer,
+                    description: description,
+                },
+            },
+        };
+
+        console.log("from +page.server.ts body: ", body);
+
         const result = await fetch(`http://localhost:3000/leitner_boxes/${boxId}/cards`, {
             method: "POST",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${sessionId}` },
-            body: JSON.stringify({ card: { question, answer, description } }),
+            body: JSON.stringify(body),
         });
 
-        if (result.ok) {
-            return { status: 200, body: { message: "Card created" } };
-        }
+        if (result.ok) throw redirect(301, `/box/${boxId}`);
         return fail(311, { error: "Failed to create card" });
     },
 } satisfies Actions;
