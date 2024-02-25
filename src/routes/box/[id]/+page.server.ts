@@ -1,6 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import { parseBox } from "../../../parser/box";
 import { parseCards } from "../../../parser/card";
+import { redirect, type Cookies } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ cookies, params, url }) => {
     const cardQuery = url.searchParams.get("cards");
@@ -29,4 +30,26 @@ export const load: PageServerLoad = async ({ cookies, params, url }) => {
         cards,
         tab: cardQuery === "" ? "cards" : "decks",
     };
+};
+
+export const actions = {
+    async deleteCard({ cookies, request }: { cookies: Cookies; request: Request }) {
+        const data = await request.formData();
+        const sessionId = cookies.get("sessionId");
+        const boxId = data.get("box_id");
+        const deckId = data.get("deck_id");
+        const cardId = data.get("card_id");
+
+        const response = await fetch(`http://localhost:3000/leitner_boxes/${boxId}/decks/${deckId}/cards/${cardId}`, {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${sessionId}` },
+        });
+        if (response.ok) {
+            throw redirect(303, `/box/${boxId}`);
+        }
+        return {
+            status: response.status,
+            statusText: response.body,
+        };
+    },
 };
