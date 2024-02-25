@@ -14,7 +14,11 @@
   {:else if box === null}
     <h1 class="text-4xl">Box not found</h1>
   {:else}
-    <h1 class="text-4xl mb-10">{box.name}</h1>
+    <h1 class="text-4xl">{box.name}</h1>
+    <div role="tablist" class="tabs tabs-bordered mb-5">
+      <a href={`/box/${box.id}`} role="tab" class="tab tab-active">Decks</a>
+      <a href={`/box/${box.id}?cards`} role="tab" class="tab">Cards</a>
+    </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10">
       {#each box.decks as deck}
         <DeckPreview {deck} />
