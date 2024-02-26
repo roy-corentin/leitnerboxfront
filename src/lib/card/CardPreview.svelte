@@ -14,8 +14,9 @@
     {/if}
   </div>
   <div class="flex w-full gap-1">
-    <button class="btn btn-secondary btn-sm w-1/2" on:click={() => (show = !show)}>{show ? "Hide" : "Show"}</button>
-    <form class="btn btn-error btn-sm w-1/2" method="post" action="/box/[id]?/deleteCard">
+    <button class="btn btn-secondary btn-sm w-1/3" on:click={() => (show = !show)}>{show ? "Hide" : "Show"}</button>
+    <a class="btn btn-primary btn-sm w-1/3" href="/box/{boxId}/deck/{card.deckId}/card/{card.id}">Edit</a>
+    <form class="btn btn-error btn-sm w-1/3" method="post" action="/box/[id]?/deleteCard">
       <input type="hidden" name="card_id" value={card.id} />
       <input type="hidden" name="deck_id" value={card.deckId} />
       <input type="hidden" name="box_id" value={boxId} />

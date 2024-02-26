@@ -4,7 +4,7 @@
   import type { PageData } from "./$types";
 
   export let data: PageData;
-  const { boxId } = data;
+  const { boxId, card } = data;
 
   export let previousPage: string | undefined;
 
@@ -18,6 +18,10 @@
 </script>
 
 <div class="flex flex-col items-center w-full">
-  <h1 class="text-5xl font-bold">New Card</h1>
-  <CardForm card={undefined} {boxId} {cancelHandler} />
+  {#if card}
+    <h1 class="text-5xl font-bold">Update Card</h1>
+    <CardForm {card} {boxId} {cancelHandler} />
+  {:else}
+    <h1 class="text-5xl font-bold">Card Not Found</h1>
+  {/if}
 </div>
