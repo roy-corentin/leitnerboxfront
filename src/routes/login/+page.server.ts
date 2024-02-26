@@ -21,8 +21,6 @@ export const actions: Actions = {
     });
 
     const json = await response.json();
-    console.log(json);
-    console.log(email, password);
 
     if (response.ok) {
       cookies.set("sessionId", json.token, { path: "/" });

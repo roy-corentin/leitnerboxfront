@@ -17,10 +17,7 @@ export const actions = {
     });
 
     if (result.ok) {
-      console.log("Box created");
-      data.delete("box_name");
-
-      redirect(303, "/");
+      throw redirect(303, "/");
     } else {
       return fail(311, { error: "Failed to create box" });
     }

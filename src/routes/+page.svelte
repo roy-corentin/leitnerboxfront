@@ -4,7 +4,6 @@
   import BoxPreview from "$lib/box/BoxPreview.svelte";
 
   export let data: PageData;
-  console.table(data);
 </script>
 
 <body>

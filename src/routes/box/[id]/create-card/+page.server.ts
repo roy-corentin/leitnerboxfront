@@ -20,8 +20,6 @@ export const actions = {
             },
         };
 
-        console.log("from +page.server.ts body: ", body);
-
         const result = await fetch(`http://localhost:3000/leitner_boxes/${boxId}/cards`, {
             method: "POST",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${sessionId}` },
