@@ -41,6 +41,8 @@
     </div>
   </div>
   <input type="hidden" name="box_id" value={boxId} />
+  <input type="hidden" name="deck_id" value={card?.deckId} />
+  <input type="hidden" name="card_id" value={card?.id} />
   <div class="md:col-span-2 flex flex-col md:flex-row md:justify-around gap-2 md:gap-0">
     <button class="btn btn-secondary md:w-1/3" type="button" on:click={cancelHandler}>Cancel</button>
     <button class="btn btn-primary md:w-1/3" type="submit">Save</button>
