@@ -2,6 +2,6 @@ import type { PageLoad } from "./$types";
 
 export const load: PageLoad = async ({ params }) => {
   return {
-    box_id: params["id"],
+    box_id: params["box_id"],
   };
 };

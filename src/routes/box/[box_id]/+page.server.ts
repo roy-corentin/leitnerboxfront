@@ -5,7 +5,7 @@ import { redirect, type Cookies } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ cookies, params, url }) => {
     const tab = url.searchParams.get("tab") ?? "decks";
-    const boxId = params["id"];
+    const boxId = params["box_id"];
     const sessionId = cookies.get("sessionId");
     let box = null;
     let cards: Card[] = [];
