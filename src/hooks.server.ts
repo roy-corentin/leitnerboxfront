@@ -5,8 +5,9 @@ const unProtectedRoutes = ["/login", "/sign-up"];
 
 export const handle: Handle = async ({ event, resolve }) => {
   const sessionId = event.cookies.get("sessionId");
+  const currentPath = event.url.pathname;
 
-  if (shouldBeRedirected(event.url.pathname, sessionId)) {
+  if (shouldBeRedirected(currentPath, sessionId)) {
     throw redirect(303, "/login");
   }
 
@@ -16,11 +17,11 @@ export const handle: Handle = async ({ event, resolve }) => {
   });
 
   if (sessionId && meResponse.ok) {
-    console.log("from hook server sessionId: ", sessionId);
     const userApi = await meResponse.json();
     event.locals.user = parseUser(userApi);
     event.locals.sessionId = sessionId;
-    console.log("from hook server userApi: ", userApi);
+  } else if (!unProtectedRoutes.includes(currentPath)) {
+    throw redirect(303, "/login");
   }
 
   const response = await resolve(event);
