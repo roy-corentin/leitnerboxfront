@@ -8,7 +8,7 @@
   export let previousPage: string | undefined;
 
   afterNavigate(({ from }) => {
-    previousPage = from?.url.pathname;
+    previousPage = from?.url.href;
   });
 
   function cancel() {
