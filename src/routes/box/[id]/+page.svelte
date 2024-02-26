@@ -2,10 +2,13 @@
   import DeckPreview from "$lib/deck/DeckPreview.svelte";
   import CardPreview from "$lib/card/CardPreview.svelte";
   import type { PageData } from "./$types";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
 
   export let data: PageData;
   let { box, cards, tab } = data;
-  // TODO don't use p for tabs
+
+  $: $page, (tab = $page.url.searchParams.get("tab") ?? "decks");
 </script>
 
 <div class="flex flex-col items-center justify-evenly">
@@ -16,22 +19,8 @@
   {:else}
     <h1 class="text-4xl">{box.name}</h1>
     <div role="tablist" class="tabs tabs-bordered mb-5">
-      <p
-        on:click={() => {
-          tab = "decks";
-        }}
-        class="tab {tab === 'decks' ? 'tab-active' : ''}"
-      >
-        Decks
-      </p>
-      <p
-        on:click={() => {
-          tab = "cards";
-        }}
-        class="tab {tab === 'cards' ? 'tab-active' : ''}"
-      >
-        Cards
-      </p>
+      <a href="?tab=decks" class="tab {tab === 'decks' && 'tab-active'}"> Decks </a>
+      <a href="?tab=cards" class="tab {tab === 'cards' && 'tab-active'}"> Cards </a>
     </div>
     {#if tab === "decks"}
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10">
