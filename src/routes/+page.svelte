@@ -14,5 +14,6 @@
       {/each}
       <BoxNewButton />
     </div>
+    <a href="/study" class="btn btn-accent w-full mt-10">Study</a>
   {/if}
 </body>
