@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let user: User | undefined;
+  export let user: User | null | undefined;
 </script>
 
 <nav class="navbar bg-base-100 border-b-2 border-primary-focus mb-4 lg:px-12">

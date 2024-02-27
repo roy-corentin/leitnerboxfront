@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { PageData } from "./$types.js";
+  import type { PageData, ActionData } from "./$types.js";
 
-  export let form;
+  export let form ActionData;
   export let data: PageData;
 
   let { email, password } = data;

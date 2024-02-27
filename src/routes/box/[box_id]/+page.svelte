@@ -2,7 +2,6 @@
   import DeckPreview from "$lib/deck/DeckPreview.svelte";
   import CardPreview from "$lib/card/CardPreview.svelte";
   import type { PageData } from "./$types";
-  import { goto } from "$app/navigation";
   import { page } from "$app/stores";
 
   export let data: PageData;
@@ -27,6 +26,10 @@
         {#each box.decks as deck}
           <DeckPreview {deck} />
         {/each}
+      </div>
+    {:else if cards.length === 0}
+      <div class="flex items-center justify-center">
+        <h2 class="text-4xl font-bold uppercase">No cards</h2>
       </div>
     {:else}
       <div class="grid grid-cols-2 md:grid-cols-3 gap-10">

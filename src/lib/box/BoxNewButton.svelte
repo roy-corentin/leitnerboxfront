@@ -2,7 +2,7 @@
   import { enhance } from "$app/forms";
 </script>
 
-<form method="POST" action="/create-box?/default_box" use:enhance>
+<form method="POST" action="/box/create?/default_box" use:enhance>
   <div
     class="md:first:ml-5 lg:first:ml-0 flex flex-col border-2 border-primary h-80 w-64 items-center justify-center rounded-xl"
   >
